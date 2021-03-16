@@ -3,17 +3,32 @@ function numRandomGen (min, max) {
     return numero;
 }
 
-var numero = 0;
+var numeri = 0;
 var numeriCasuali = [];
-
+var tentativo = 0;
+var corretto = 0;
+var numIndovinati = [];
 while ( numeriCasuali.length < 5 ){
 
-    var numero = numRandomGen (1, 100);
-    if ( numeriCasuali.includes(numero) == false ){
-        numeriCasuali.push(numero)
+    var numeri = numRandomGen (1, 100);
+    if ( numeriCasuali.includes(numeri) == false ){
+        numeriCasuali.push(numeri)
     }
 
 }
 
 alert(numeriCasuali);
+
+setTimeout(
+    function(){
+        for(var i = 0; i < 5; i++){
+            tentativo = parseInt(prompt("inserisci un numero"));
+            if ( numeriCasuali.includes(tentativo) ){
+                corretto++;
+                numIndovinati.push(tentativo)
+            }
+        }
+        alert("hai indovinato " + corretto + " numeri, e sono " + numIndovinati);
+    },
+30000);
 
